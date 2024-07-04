@@ -1,0 +1,120 @@
+/* navbar.scss */
+
+// Variables
+$primary-color: #333;
+$link-color: #fff;
+$link-hover-color: #ffcc00;
+$dropdown-bg-color: #555;
+$dropdown-link-color: #fff;
+$border-radius: 15px; // Adjust the border radius for rounded corners
+
+// Navbar styles
+nav {
+  background-color: $primary-color;
+  padding: 10px 20px;
+  font-family: Arial, sans-serif;
+  border-radius: $border-radius;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center; // Centers the items horizontally
+  border-radius: $border-radius;
+  overflow: hidden; // Ensures children with border-radius stay rounded
+}
+
+li {
+  position: relative; // Enables positioning for dropdown menus
+  margin-right: 20px;
+}
+
+li:last-child {
+  margin-right: 0;
+}
+
+a {
+  color: $link-color;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  padding: 10px;
+  display: block;
+  border-radius: $border-radius;
+}
+
+a:hover {
+  color: $link-hover-color;
+  background-color: darken($primary-color, 10%); // Darkens the background slightly on hover
+}
+
+/* Active link styles */
+li.active a,
+a.active {
+  font-weight: bold;
+  background-color: $link-hover-color;
+  color: $primary-color;
+}
+
+/* Dropdown menu styles */
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: $dropdown-bg-color;
+  display: none;
+  padding: 10px;
+  z-index: 1;
+  border-radius: $border-radius;
+}
+
+li:hover .dropdown {
+  display: block;
+}
+
+.dropdown a {
+  color: $dropdown-link-color;
+  padding: 8px 10px;
+}
+
+.dropdown a:hover {
+  background-color: darken($dropdown-bg-color, 10%);
+}
+
+@media (max-width: 600px) {
+  // Mobile responsiveness
+  ul {
+    flex-direction: column; // Stacks items vertically on small screens
+    border-radius: $border-radius; // Ensures rounded corners on mobile
+  }
+
+  li {
+    margin-bottom: 10px; // Adds space between stacked items
+    position: static; // Resets position for mobile view
+  }
+
+  .dropdown {
+    position: static; // Resets position for mobile view
+    display: none; // Hides dropdowns initially on mobile
+    background-color: $primary-color;
+    border-radius: $border-radius; // Ensures rounded corners on mobile
+  }
+
+  li:hover .dropdown {
+    display: none; // Prevents dropdowns from appearing on hover on mobile
+  }
+
+  a {
+    display: block;
+    padding: 10px;
+    border-radius: $border-radius;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); // Adds divider between links
+  }
+
+  a.active {
+    font-weight: bold;
+    background-color: $link-hover-color;
+    color: $primary-color;
+  }
+}

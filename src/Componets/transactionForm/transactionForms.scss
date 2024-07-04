@@ -1,0 +1,40 @@
+// transactionForms.scss
+
+.transaction-form {
+    width: 100%;
+    max-width: 300px; /* Adjust width as needed */
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px; /* Space above the form */
+
+    h2 {
+        font-size: 1.5rem;
+        margin-bottom: 10px; /* Space below the heading */
+        text-align: center; /* Center heading */
+    }
+
+    .input-field, .select-field {
+        width: 100%;
+        padding: 12px; /* Increased padding for better appearance */
+        font-size: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 6px; /* Rounded edges */
+        margin-bottom: 15px; /* Increased spacing between fields */
+        box-sizing: border-box; /* Ensures padding is included in width */
+    }
+
+    .submit-button {
+        margin-top: 20px;
+        padding: 12px 24px;
+        font-size: 1rem;
+        background-color: #28a745; /* Green color */
+        color: white;
+        border: none;
+        border-radius: 6px; /* Rounded edges */
+        cursor: pointer;
+
+        &:hover {
+            background-color: #218838; /* Darker green on hover */
+        }
+    }
+}
