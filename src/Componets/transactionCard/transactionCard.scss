@@ -20,7 +20,7 @@
   
       &:first-child {
         font-weight: bold;
-        color: #000; /* Darker color for emphasis */
+        color: #000; 
       }
   
       &:last-child {
@@ -30,13 +30,13 @@
     }
   
     .amount {
-      color: green; /* Green color for the amount */
+      color: green; 
       font-weight: bold;
       font-size: 16px;
     }
   
     .date {
-      color: #555; /* Darker gray for the date */
+      color: #555; 
       font-size: 14px;
     }
   }

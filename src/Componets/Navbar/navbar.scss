@@ -1,14 +1,11 @@
-/* navbar.scss */
 
-// Variables
 $primary-color: #333;
 $link-color: #fff;
 $link-hover-color: #ffcc00;
 $dropdown-bg-color: #555;
 $dropdown-link-color: #fff;
-$border-radius: 15px; // Adjust the border radius for rounded corners
+$border-radius: 15px; 
 
-// Navbar styles
 nav {
   background-color: $primary-color;
   padding: 10px 20px;
@@ -21,13 +18,13 @@ ul {
   padding: 0;
   margin: 0;
   display: flex;
-  justify-content: center; // Centers the items horizontally
+  justify-content: center; 
   border-radius: $border-radius;
-  overflow: hidden; // Ensures children with border-radius stay rounded
+  overflow: hidden; 
 }
 
 li {
-  position: relative; // Enables positioning for dropdown menus
+  position: relative; 
   margin-right: 20px;
 }
 
@@ -46,10 +43,9 @@ a {
 
 a:hover {
   color: $link-hover-color;
-  background-color: darken($primary-color, 10%); // Darkens the background slightly on hover
+  background-color: darken($primary-color, 10%); 
 }
 
-/* Active link styles */
 li.active a,
 a.active {
   font-weight: bold;
@@ -57,7 +53,6 @@ a.active {
   color: $primary-color;
 }
 
-/* Dropdown menu styles */
 .dropdown {
   position: absolute;
   top: 100%;
@@ -83,33 +78,32 @@ li:hover .dropdown {
 }
 
 @media (max-width: 600px) {
-  // Mobile responsiveness
   ul {
-    flex-direction: column; // Stacks items vertically on small screens
-    border-radius: $border-radius; // Ensures rounded corners on mobile
+    flex-direction: column; 
+    border-radius: $border-radius; 
   }
 
   li {
-    margin-bottom: 10px; // Adds space between stacked items
-    position: static; // Resets position for mobile view
+    margin-bottom: 10px; 
+    position: static; 
   }
 
   .dropdown {
-    position: static; // Resets position for mobile view
-    display: none; // Hides dropdowns initially on mobile
+    position: static; 
+    display: none; 
     background-color: $primary-color;
-    border-radius: $border-radius; // Ensures rounded corners on mobile
+    border-radius: $border-radius;
   }
 
   li:hover .dropdown {
-    display: none; // Prevents dropdowns from appearing on hover on mobile
+    display: none; 
   }
 
   a {
     display: block;
     padding: 10px;
     border-radius: $border-radius;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1); // Adds divider between links
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
   }
 
   a.active {
