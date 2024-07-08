@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './transactionForms.scss'; 
+import './transactionForms.scss';
 
 export default function TransactionForm({ setData }) {
     const API = import.meta.env.VITE_BASE_URL;
@@ -8,7 +8,7 @@ export default function TransactionForm({ setData }) {
 
     const initialTransactionData = {
         item_name: '',
-        amount: '', 
+        amount: '',
         date: '',
         from: '',
         category: ''
@@ -18,10 +18,10 @@ export default function TransactionForm({ setData }) {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        
+
         if (name === 'amount') {
             const parsedValue = parseFloat(value);
-            if (!isNaN(parsedValue)) { 
+            if (!isNaN(parsedValue)) {
                 setTransactionData(prevState => ({
                     ...prevState,
                     [name]: parsedValue
@@ -29,7 +29,7 @@ export default function TransactionForm({ setData }) {
             } else {
                 setTransactionData(prevState => ({
                     ...prevState,
-                    [name]: '' 
+                    [name]: ''
                 }));
             }
         } else {
@@ -42,6 +42,15 @@ export default function TransactionForm({ setData }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        // Check if all fields are filled
+        for (const key in transactionData) {
+            if (transactionData[key] === '') {
+                alert(`Please complete all fields.`);
+                return; // Exit early if any field is empty
+            }
+        }
+
         fetch(API, {
             method: "POST",
             body: JSON.stringify(transactionData),
@@ -49,15 +58,15 @@ export default function TransactionForm({ setData }) {
                 "Content-Type": "application/json"
             }
         })
-        .then(res => res.json())
-        .then(res => {
-            console.log('Response from server:', res);
-            setData(prevState => [...prevState, res]);
-            navigate("/logs");
-        })
-        .catch(error => {
-            console.error('Error submitting form:', error);
-        });
+            .then(res => res.json())
+            .then(res => {
+                console.log('Response from server:', res);
+                setData(prevState => [...prevState, res]);
+                navigate("/logs");
+            })
+            .catch(error => {
+                console.error('Error submitting form:', error);
+            });
     };
 
     return (

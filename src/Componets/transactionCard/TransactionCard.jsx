@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import './transactionCard.scss';
 
-export default function TransactionCard({element, index, setData }) {
+export default function TransactionCard({ element, index, setData }) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [transaction, setTransaction] = useState(element);
   const API = import.meta.env.VITE_BASE_URL;
-  
 
   const handleToggleExpand = () => {
     setIsExpanded(!isExpanded);
@@ -54,17 +53,12 @@ export default function TransactionCard({element, index, setData }) {
   };
 
   const handleDelete = () => {
-    console.log(index)
     if (window.confirm('Are you sure you want to delete this transaction?')) {
       fetch(`${API}/${index}`, {
         method: "DELETE",
-        
-        
       })
-        .then(response => {
-            response.json()
-        }).then(response =>{
-            setData(prevState => [...prevState])
+        .then(() => {
+          setData(prevState => prevState.filter(item => item.id !== transaction.id));
         })
         .catch(error => {
           console.error('Error deleting transaction:', error);
@@ -81,7 +75,7 @@ export default function TransactionCard({element, index, setData }) {
       <button onClick={handleToggleExpand}>
         {isExpanded ? 'Collapse' : 'Expand'}
       </button>
-      <button onClick={handleDelete}  className="delete-button">
+      <button onClick={handleDelete} className="delete-button">
         Delete
       </button>
       {isExpanded && (
@@ -114,7 +108,6 @@ export default function TransactionCard({element, index, setData }) {
           ) : (
             <>
               <div className="expanded-content">
-                <p>Description: {transaction.description}</p>
                 <p>Category: {transaction.category}</p>
               </div>
               <button onClick={handleToggleEdit}>
