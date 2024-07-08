@@ -17,7 +17,7 @@ const App = () => {
       .then(response => response.json())
       .then(response => setData(response))
       .catch(error => console.error(error));
-   }, [data])
+   }, [API])
   return (
     <Router>
       <Navbar />

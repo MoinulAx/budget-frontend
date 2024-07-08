@@ -31,7 +31,7 @@ export default function TransactionCard({ element, index, setData }) {
     const transactionId = transaction.id;
     const updatedTransaction = {
       ...transaction,
-      amount: parseInt(transaction.amount, 10) // Convert amount to an integer
+      amount: parseInt(transaction.amount, 10) 
     };
 
     fetch(`${API}/${index}`, {
@@ -44,7 +44,7 @@ export default function TransactionCard({ element, index, setData }) {
       .then(res => res.json())
       .then(res => {
         console.log('Response from server:', res);
-        setData(prevState => prevState.map(item => item.id === transactionId ? res : item));
+        setData(prevState => prevState.map(item => item.id === index ? res : item));
         setIsEditing(false);
       })
       .catch(error => {
