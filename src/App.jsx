@@ -6,7 +6,6 @@ import TransactionLog from './Componets/transactionsLog/TransactionLog';
 import HomePage from './Componets/Home/HomePage';
 import Navbar from './Componets/Navbar/Navbar';
 import './App.css'
-//https://budget-backend-1.onrender.com/transaction
 
 
 
