@@ -6,6 +6,8 @@ import TransactionLog from './Componets/transactionsLog/TransactionLog';
 import HomePage from './Componets/Home/HomePage';
 import Navbar from './Componets/Navbar/Navbar';
 import './App.css'
+//https://budget-backend-1.onrender.com/transaction
+
 
 
 const App = () => {
@@ -16,13 +18,13 @@ const App = () => {
       .then(response => response.json())
       .then(response => setData(response))
       .catch(error => console.error(error));
-   }, [API])
+   }, [data])
   return (
     <Router>
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/logs" element={<TransactionLog data = {data}/>} />
+        <Route path="/logs" element={<TransactionLog data = {data} setData ={setData}/>} />
         <Route path="/forms" element={<TransactionForm data = {data}
         setData ={setData}/>} />
       </Routes>
